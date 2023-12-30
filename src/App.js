@@ -1,13 +1,20 @@
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Homepage from './components/HomePage';
 import ComputersContainer from './components/ComputersContainer';
 
 function App() {
   return (
-    <div className="App">
-      <div className="computers">
-        <ComputersContainer/>
+    <Router>
+      <div className="App">
+        <div className="homepage">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/computer" element={<ComputersContainer/>} />
+          </Routes>           
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

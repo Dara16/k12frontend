@@ -18,6 +18,7 @@ export default function ComputersContainer() {
     return (
         <div>
             <h2>COMPUTERS</h2>
+            <h3>Select Your Device</h3>
             {computers && populateComputers()}
         </div>
     )
