@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
-export default function ComputerForm({createComputer}) {
+export default function TabletForm({createTablet}) {
     const [formData, setFormData] = useState({
         brand: "",
         deviceName: "",
         deviceModel: "",
         operatingSystem: "",
         ram: "",
-        storageSize: ""
+        storageSize: "",
     })
 
     function handleChange(e) {
@@ -17,7 +17,7 @@ export default function ComputerForm({createComputer}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        createComputer(formData)
+        createTablet(formData)
         setFormData({
             brand: "",
             deviceName: "",

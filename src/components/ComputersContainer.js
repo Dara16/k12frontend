@@ -13,7 +13,7 @@ export default function ComputersContainer() {
     }, [])
 
     function populateComputers() {
-        return computers.map(computer => <Computer computer={computer}/>)
+        return computers.map(computer => <Computer computer={computer} key={computer._id}/>)
     }
 
     function createComputer(computer) {

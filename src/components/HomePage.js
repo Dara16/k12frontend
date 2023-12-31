@@ -5,10 +5,11 @@ export default function HomePage() {
     return (
         <div className="homepage">
             <div>
-                <h1>K12 DATA SOLUTIONS</h1>
+                <h1>K-12 DATA SOLUTIONS</h1>
             </div>
             <h3>Select Your Device Type</h3>
             <NavLink to="/computer">Computer</NavLink>
+            <NavLink to="/tablet">Tablet</NavLink>
         </div>
     )
 }
