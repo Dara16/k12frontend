@@ -39,9 +39,6 @@ export default function TabletsContainer() {
                 <TabletForm createTablet={createTablet}/>
                 <p></p>
             </div>
-            <div>
-                
-            </div>
         </div>
     )
 }

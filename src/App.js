@@ -4,6 +4,7 @@ import Homepage from './components/HomePage';
 import ComputersContainer from './components/ComputersContainer';
 import Computer from './components/Computer'
 import TabletsContainer from './components/TabletsContainer';
+import WorkstationsContainer from './components/WorkstationContainer';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/computer" element={<ComputersContainer/>} />
             <Route path="/computer/:computerId" element={<Computer/>}></Route>
             <Route path="/tablet" element={<TabletsContainer/>} />
+            <Route path="/workstation" element={<WorkstationsContainer/>} />
           </Routes>           
         </div>
       </div>

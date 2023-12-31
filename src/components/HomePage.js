@@ -10,6 +10,7 @@ export default function HomePage() {
             <h3>Select Your Device Type</h3>
             <NavLink to="/computer">Computer</NavLink>
             <NavLink to="/tablet">Tablet</NavLink>
+            <NavLink to="/workstation">Workstation</NavLink>
         </div>
     )
 }
