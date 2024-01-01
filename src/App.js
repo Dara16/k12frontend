@@ -6,6 +6,7 @@ import ComputersContainer from './components/ComputersContainer';
 import Computer from './components/Computer'
 import TabletsContainer from './components/TabletsContainer';
 import WorkstationsContainer from './components/WorkstationContainer';
+import HardserverContainer from './components/HardserverContainer';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/computer/:computerId" element={<Computer/>}></Route>
             <Route path="/tablet" element={<TabletsContainer/>} />
             <Route path="/workstation" element={<WorkstationsContainer/>} />
+            <Route path="/hardserver" element={<HardserverContainer/>} />
           </Routes>           
         </div>
       </div>

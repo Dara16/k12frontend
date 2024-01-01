@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-export default function WorkstationForm({createWorkstation}) {
+export default function HardserverForm({createHardserver}) {
     const [formData, setFormData] = useState({
         brand: "",
         deviceName: "",
         deviceModel: "",
-        operatingSystem: "",
+        systemRequirements: "",
         ram: "",
         storageSize: ""
     })
@@ -22,12 +22,12 @@ export default function WorkstationForm({createWorkstation}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        createWorkstation(formData)
+        createHardserver(formData)
         setFormData({
             brand: "",
             deviceName: "",
             deviceModel: "",
-            operatingSystem: "",
+            systemRequirements: "",
             ram: "",
             storageSize: ""
         })
@@ -46,8 +46,8 @@ export default function WorkstationForm({createWorkstation}) {
                 <input onChange={handleChange} name="deviceName" value={formData.deviceName}/>
                 <label>Model: </label>
                 <input onChange={handleChange} name="deviceModel" value={formData.deviceModel}/>
-                <label>Operating System: </label>
-                <input onChange={handleChange} name="operatingSystem" value={formData.operatingSystem}/>
+                <label>System Requirements: </label>
+                <input onChange={handleChange} name="systemRequirements" value={formData.systemRequirements}/>
                 <label>RAM: </label>
                 <input onChange={handleChange} name="ram" value={formData.ram}/>
                 <label>Storage: </label>
@@ -57,7 +57,7 @@ export default function WorkstationForm({createWorkstation}) {
             </form>
             <p>
                 {success && (
-                    <span>Success! We will respond to the email associated with your account within 3 business days</span>
+                    <span>Device submitted successfully. We will respond to the email associated with your account within 3 business days</span>
                 )}
             </p>
         </div>
