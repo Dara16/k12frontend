@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Tablet from "./Tablet"
 import TabletForm from './TabletForm'
+import { BASE_URL } from '../constraints/index';
 
 export default function TabletsContainer() {
     const [tablets, setTablets] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5001/tablet')
+        fetch(BASE_URL + 'tablet')
             .then(resp => resp.json())
             .then(json => setTablets(json))
 
@@ -17,7 +18,7 @@ export default function TabletsContainer() {
     }
 
     function createTablet(tablet) {
-        fetch('http://localhost:5001/tablet',{
+        fetch(BASE_URL + 'tablet',{
             method: "POST",
             body: JSON.stringify(tablet),
             headers: {

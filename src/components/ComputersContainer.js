@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Computer from "./Computer"
 import ComputerForm from './ComputerForm';
+import { BASE_URL } from '../constraints/index';
 
 export default function ComputersContainer() {
     const [computers, setComputers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5001/computer')
+        fetch(BASE_URL + 'computer')
             .then(resp => resp.json())
             .then(json => setComputers(json))
 
@@ -17,7 +18,7 @@ export default function ComputersContainer() {
     }
 
     function createComputer(computer) {
-        fetch('http://localhost:5001/computer',{
+        fetch(BASE_URL + 'computer',{
             method: "POST",
             body: JSON.stringify(computer),
             headers: {

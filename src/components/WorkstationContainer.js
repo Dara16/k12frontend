@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Workstation from "./Workstation"
 import WorkstationForm from './WorkstationForm'
+import { BASE_URL } from '../constraints/index';
 
 export default function WorkstationsContainer() {
     const [workstations, setWorkstations] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5001/workstation')
+        fetch(BASE_URL + 'workstation')
             .then(resp => resp.json())
             .then(json => setWorkstations(json))
 
@@ -17,7 +18,7 @@ export default function WorkstationsContainer() {
     }
 
     function createWorkstation(workstation) {
-        fetch('http://localhost:5001/workstation',{
+        fetch(BASE_URL + 'workstation',{
             method: "POST",
             body: JSON.stringify(workstation),
             headers: {
