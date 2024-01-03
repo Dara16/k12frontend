@@ -5,7 +5,7 @@ export default function Workstation({ workstation }) {
 
     return (
         <div>
-            <Link to={`/workstation/${workstation._id}`}><p>{workstation.brand} {workstation.deviceName}</p></Link>
+           <button className='item-button'><Link to={`/workstation/${workstation._id}`}>{workstation.brand} {workstation.deviceName}</Link></button>
 
         </div>
     )

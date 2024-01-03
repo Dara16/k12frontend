@@ -5,6 +5,7 @@ import { BASE_URL } from '../constraints/index';
 
 export default function ComputersContainer() {
     const [computers, setComputers] = useState([]);
+    const [dropdown, setDropdown] = useState(false)
 
     useEffect(() => {
         fetch(BASE_URL + 'computer')
@@ -31,17 +32,22 @@ export default function ComputersContainer() {
         
     }
 
+    function toggleDropdown() {
+        setDropdown(!dropdown)
+    }
+
     return (
         <div>
             <h2>COMPUTERS</h2>
-            <h3>Select Your Device</h3>
-            {computers && populateComputers()}
+            <button className='select-device' onClick={toggleDropdown}><strong>Select Your Device ▼ </strong></button>
+            {dropdown && (
+                <div className='items'>
+                    {computers && populateComputers()}
+                </div>
+            )}
+            
             <div>           
                 <ComputerForm createComputer={createComputer}/>
-                <p></p>
-            </div>
-            <div>
-                
             </div>
         </div>
     )

@@ -5,6 +5,7 @@ import { BASE_URL } from '../constraints/index';
 
 export default function TabletsContainer() {
     const [tablets, setTablets] = useState([]);
+    const [dropdown, setDropdown] = useState(false)
 
     useEffect(() => {
         fetch(BASE_URL + 'tablet')
@@ -31,14 +32,22 @@ export default function TabletsContainer() {
         
     }
 
+    function toggleDropdown() {
+        setDropdown(!dropdown)
+    }
+
     return (
         <div>
             <h2>TABLETS</h2>
-            <h3>Select Your Device</h3>
-            {tablets && populateTablets()}
+            <button className='select-device' onClick={toggleDropdown}><strong>Select Your Device ▼ </strong></button>
+            {dropdown && (
+                <div className='items'>
+                    {tablets && populateTablets()}
+                </div>
+            )}
+            
             <div>           
                 <TabletForm createTablet={createTablet}/>
-                <p></p>
             </div>
         </div>
     )

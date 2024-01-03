@@ -6,7 +6,7 @@ export default function Hardserver({ hardserver }) {
 
     return (
         <div>
-            <Link to={`/hardserver/${hardserver._id}`}><p>{hardserver.brand} {hardserver.deviceName}</p></Link>
+            <button className='item-button'><Link to={`/hardserver/${hardserver._id}`}>{hardserver.brand} {hardserver.deviceName}</Link></button>
         </div>
     )
 }

@@ -5,7 +5,7 @@ export default function Tablet({ tablet }) {
 
     return (
         <div>
-            <Link to={`/tablet/${tablet._id}`}><p>{tablet.brand} {tablet.deviceName}</p></Link>
+            <button className='item-button'><Link to={`/tablet/${tablet._id}`}>{tablet.brand} {tablet.deviceName}</Link></button>
         </div>
     )
 }

@@ -5,7 +5,7 @@ export default function Computer({ computer }) {
 
     return (
         <div>
-            <Link to={`/computer/${computer._id}`}><p>{computer.brand} {computer.deviceName}</p></Link>
+            <button className='item-button'><Link to={`/computer/${computer._id}`}>{computer.brand} {computer.deviceName}</Link></button>
         </div>
     )
 }

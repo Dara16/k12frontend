@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: rgb(232, 239, 240);
+  background-color: rgb(255, 255, 255);
 }
 
 .App {
@@ -33,21 +33,17 @@ body {
   margin-bottom: 15px;
 }
 
-/* The close button */
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+.select-device {
+  width: 25%
 }
 
-/* When moving the mouse over the close button */
-.closebtn:hover {
-  color: black;
+.item-button {
+  width: 25%;
+  margin: 1px
+}
+
+.items {
+  padding-top: 4px
 }
 
 

@@ -5,6 +5,7 @@ import { BASE_URL } from '../constraints/index';
 
 export default function HardserverContainer() {
     const [hardservers, setHardservers] = useState([]);
+    const [dropdown, setDropdown] = useState(false);
 
     useEffect(() => {
         fetch(BASE_URL + 'hardserver')
@@ -31,14 +32,22 @@ export default function HardserverContainer() {
         
     }
 
+    function toggleDropdown() {
+        setDropdown(!dropdown)
+    }
+
     return (
         <div>
             <h2>SERVERS</h2>
-            <h3>Select Your Device</h3>
-            {hardservers && populateHardserver()}
+            <button className='select-device' onClick={toggleDropdown}><strong>Select Your Device ▼ </strong></button>
+            {dropdown && (
+                <div className='items'>
+                    {hardservers && populateHardserver()}
+                </div>
+            )}
+
             <div>           
                 <HardserverForm createHardserver={createHardserver}/>
-                <p></p>
             </div>
         </div>
     )
