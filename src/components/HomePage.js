@@ -12,7 +12,7 @@ export default function HomePage() {
             <NavLink to="/tablet">Tablet</NavLink>
             <NavLink to="/workstation">Workstation</NavLink>
             <NavLink to="/hardserver">Server</NavLink>
-            <NavLink to="">Mobile Phone</NavLink>
+            <NavLink to="/phone">Mobile Phone</NavLink>
             <NavLink to="">Firewall</NavLink>
             <NavLink to="">Network Communication Tool</NavLink>
             <NavLink to="">IoT Device</NavLink>

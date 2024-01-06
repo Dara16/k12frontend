@@ -10,6 +10,8 @@ import ComputerDetails from './components/ComputerDetails';
 import HardserverDetails from './components/HardserverDetails'
 import TabletDetails from './components/TabletDetails';
 import WorkstationDetails from './components/WorkstationDetails';
+import PhoneContainer from './components/PhoneContainer';
+import PhoneDetails from './components/PhoneDetails';
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
             <Route path="/workstation/:workstationId" element={<WorkstationDetails/>} />
             <Route path="/hardserver" element={<HardserverContainer/>} />
             <Route path="/hardserver/:hardserverId" element={<HardserverDetails/>} />
+            <Route path="/phone" element={<PhoneContainer/>} />
+            <Route path="/phone/:phoneId" element={<PhoneDetails/>} />
           </Routes>           
         </div>
       </div>
