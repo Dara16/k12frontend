@@ -13,9 +13,9 @@ export default function TabletDetails() {
     }, [tabletId])
 
     return (
-        <div>
+        <div className='detail-message'>
             <h3>{tablet.brand} {tablet.deviceName}</h3>
-            <p>Your device may have the following vulnerabilities: default username: {tablet.defaultUsername}, default password: {tablet.defaultPassword}.
+            <p>Your device may have the following vulnerabilities: default username: <strong>{tablet.defaultUsername}</strong>, default password: <strong>{tablet.defaultPassword}</strong>.
                 Please ensure your device is protected using a strong password, stored in a safe place. Do not share your username and password.
                 For more information on your device setup, please visit <a href={ `${tablet.userGuides}`} target="_blank" rel="noreferrer">this documentation </a>.
             </p>

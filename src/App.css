@@ -34,16 +34,22 @@ body {
 }
 
 .select-device {
-  width: 25%
+  width: 24rem
 }
 
 .item-button {
-  width: 25%;
+  width: 24rem;
   margin: 1px
 }
 
 .items {
   padding-top: 4px
+}
+
+.detail-message {
+  width: 50rem;
+  padding-left: 10rem;
+  text-align: center
 }
 
 

@@ -13,9 +13,9 @@ export default function PhoneDetails() {
     }, [phoneId])
 
     return (
-        <div>
+        <div className='detail-message'>
             <h3>{phone.brand} {phone.deviceName}</h3>
-            <p>Your device may have the following vulnerabilities: default username: {phone.defaultUsername}, default password: {phone.defaultPassword}.
+            <p>Your device may have the following vulnerabilities: default username: <strong>{phone.defaultUsername}</strong>, default password: <strong>{phone.defaultPassword}</strong>.
                 Please ensure your device is protected using a strong password, stored in a safe place. Do not share your username and password.
                 For more information on your device setup, please visit <a href={ `${phone.userGuides}`} target="_blank" rel="noreferrer">this documentation </a>.
             </p>
