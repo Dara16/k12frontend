@@ -16,6 +16,7 @@ export default function ComputerDetails() {
         <div>
             <h3>{computer.brand} {computer.deviceName}</h3>
             <p>Your device may have the following vulnerabilities: default username: {computer.defaultUsername}, default password: {computer.defaultPassword}.
+                Please ensure your device is protected using a strong password, stored in a safe place. Do not share your username and password.
                 For more information on your device setup, please visit <a href={ `${computer.userGuides}`} target="_blank" rel="noreferrer">this documentation </a>.
             </p>
         </div>

@@ -16,6 +16,7 @@ export default function HardseverDetails() {
         <div>
             <h3>{hardserver.brand} {hardserver.deviceName}</h3>
             <p>Your device may have the following vulnerabilities: default username: {hardserver.defaultUsername}, default password: {hardserver.defaultPassword}.
+                Please ensure your device is protected using a strong password, stored in a safe place. Do not share your username and password.
                 For more information on your device setup, please visit <a href={ `${hardserver.userGuides}`} target="_blank" rel="noreferrer">this documentation </a>.
             </p>
         </div>
