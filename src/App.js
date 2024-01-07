@@ -12,6 +12,8 @@ import TabletDetails from './components/TabletDetails';
 import WorkstationDetails from './components/WorkstationDetails';
 import PhoneContainer from './components/PhoneContainer';
 import PhoneDetails from './components/PhoneDetails';
+import FirewallContainer from './components/FirewallContainer';
+import FirewallDetails from './components/FirewallDetails';
 
 
 function App() {
@@ -34,6 +36,9 @@ function App() {
             <Route path="/hardserver/:hardserverId" element={<HardserverDetails/>} />
             <Route path="/phone" element={<PhoneContainer/>} />
             <Route path="/phone/:phoneId" element={<PhoneDetails/>} />
+            <Route path="/firewall" element={<FirewallContainer/>} />
+            <Route path="/firewall/:firewallId" element={<FirewallDetails/>} />
+
           </Routes>           
         </div>
       </div>
