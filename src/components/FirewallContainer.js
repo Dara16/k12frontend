@@ -38,7 +38,7 @@ export default function FirewallContainer() {
 
     return (
         <div>
-            <h2>PHONES</h2>
+            <h2>FIREWALLS</h2>
             <button className='select-device' onClick={toggleDropdown}><strong>Select Your Device ▼ </strong></button>
             {dropdown && (
                 <div className='items'>
