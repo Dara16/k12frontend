@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-export default function IotForm({createPhone}) {
+export default function IotForm({createIot}) {
     const [formData, setFormData] = useState({
         brand: "",
         deviceName: "",
         deviceModel: "",
-        connectivity: "",
+        connectivity: ""
     })
     const [success, setSuccess] = useState(false)
 
@@ -20,12 +20,12 @@ export default function IotForm({createPhone}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        createPhone(formData)
+        createIot(formData)
         setFormData({
             brand: "",
             deviceName: "",
             deviceModel: "",
-            connectivity: "",
+            connectivity: ""
         })
 
         toggleSuccess()
