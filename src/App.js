@@ -16,6 +16,8 @@ import FirewallContainer from './components/FirewallContainer';
 import FirewallDetails from './components/FirewallDetails';
 import NetworkContainer from './components/NetworkContainer';
 import NetworkDetails from './components/NetworkDetails';
+import IotDetails from './components/IotDetails';
+import IotContainer from './components/IotContainer';
 
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
             <Route path="/firewall/:firewallId" element={<FirewallDetails/>} />
             <Route path="/network" element={<NetworkContainer/>} />
             <Route path="/network/:networkId" element={<NetworkDetails/>} />
+            <Route path="/iot" element={<IotContainer/>} />
+            <Route path="/iot/:iotId" element={<IotDetails/>} />
           </Routes>           
         </div>
       </div>

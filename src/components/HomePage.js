@@ -15,7 +15,7 @@ export default function HomePage() {
             <NavLink to="/phone">Mobile Phone</NavLink>
             <NavLink to="/firewall">Firewall</NavLink>
             <NavLink to="/network">Network Communication Device</NavLink>
-            <NavLink to="">IoT Device</NavLink>
+            <NavLink to="/iot">IoT Device</NavLink>
         </div>
     )
 }
