@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function FirewallForm({createPhone}) {
+export default function FirewallForm({createFirewall}) {
     const [formData, setFormData] = useState({
         brand: "",
         firewallType: "",
@@ -20,7 +20,7 @@ export default function FirewallForm({createPhone}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        createPhone(formData)
+        createFirewall(formData)
         setFormData({
             brand: "",
             firewallType: "",
