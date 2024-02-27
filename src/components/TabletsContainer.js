@@ -18,19 +18,9 @@ export default function TabletsContainer() {
         return tablets.map(tablet => <Tablet tablet={tablet} key={tablet._id}/>)
     }
 
-    function createTablet(tablet) {
-        fetch(BASE_URL + 'tablet',{
-            method: "POST",
-            body: JSON.stringify(tablet),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => setTablets([...tablets, json]))
-        
-    }
+    function updateTablets(tablet) {
+        setTablets([...tablets, tablet])
+    }   
 
     function toggleDropdown() {
         setDropdown(!dropdown)
@@ -47,7 +37,7 @@ export default function TabletsContainer() {
             )}
             
             <div>           
-                <TabletForm createTablet={createTablet}/>
+                <TabletForm updateTablets={updateTablets}/>
             </div>
         </div>
     )

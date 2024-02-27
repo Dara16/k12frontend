@@ -11,26 +11,15 @@ export default function ComputersContainer() {
         fetch(BASE_URL + 'computer')
             .then(resp => resp.json())
             .then(json => setComputers(json))
-
     }, [])
 
     function populateComputers() {
         return computers.map(computer => <Computer computer={computer} key={computer._id}/>)
     }
 
-    function createComputer(computer) {
-        fetch(BASE_URL + 'computer',{
-            method: "POST",
-            body: JSON.stringify(computer),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => setComputers([...computers, json]))
-        
-    }
+    function updateComputers(computer) {
+        setComputers([...computers, computer])
+    }   
 
     function toggleDropdown() {
         setDropdown(!dropdown)
@@ -47,7 +36,7 @@ export default function ComputersContainer() {
             )}
             
             <div>           
-                <ComputerForm createComputer={createComputer}/>
+                <ComputerForm updateComputers={updateComputers}/>
             </div>
         </div>
     )

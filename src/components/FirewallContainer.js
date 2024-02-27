@@ -11,25 +11,14 @@ export default function FirewallContainer() {
         fetch(BASE_URL + 'firewall')
             .then(resp => resp.json())
             .then(json => setFirewalls(json))
-
     }, [])
 
     function populateFirewalls() {
         return firewalls.map(firewall => <Firewall firewall={firewall} key={firewall._id}/>)
     }
 
-    function createFirewall(firewall) {
-        fetch(BASE_URL + 'firewall',{
-            method: "POST",
-            body: JSON.stringify(firewall),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => setFirewalls([...firewalls, json]))
-        
+    function updateFirewalls(firewall) {
+        setFirewalls([...firewalls, firewall])
     }
 
     function toggleDropdown() {
@@ -47,7 +36,7 @@ export default function FirewallContainer() {
             )}
             
             <div>           
-                <FirewallForm createFirewall={createFirewall}/>
+                <FirewallForm updateFirewalls={updateFirewalls}/>
             </div>
         </div>
     )

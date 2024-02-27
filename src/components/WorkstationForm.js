@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { BASE_URL } from '../constraints/index';
 
-export default function WorkstationForm({createWorkstation}) {
+export default function WorkstationForm({ updateWorkstations }) {
     const [formData, setFormData] = useState({
         brand: "",
         deviceName: "",
@@ -11,13 +12,26 @@ export default function WorkstationForm({createWorkstation}) {
     })
     const [success, setSuccess] = useState(false)
 
-    function toggleSuccess() {
-        setSuccess(!success)
-    }
-
     function handleChange(e) {
         formData[e.target.name] = e.target.value
         setFormData({...formData})
+    }
+
+    function createWorkstation(workstation) {
+        fetch(BASE_URL + 'workstation',{
+            method: "POST",
+            body: JSON.stringify(workstation),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            const {device, message} = json
+            updateWorkstations(device)
+            setSuccess(message)
+        })        
     }
 
     function handleSubmit(e) {
@@ -31,8 +45,6 @@ export default function WorkstationForm({createWorkstation}) {
             ram: "",
             storageSize: ""
         })
-
-        toggleSuccess()
     }
 
 
@@ -57,7 +69,7 @@ export default function WorkstationForm({createWorkstation}) {
             </form>
             <p>
                 {success && (
-                    <span>Success! We will respond to the email associated with your account within 3 business days</span>
+                    <span>{success}</span>
                 )}
             </p>
         </div>

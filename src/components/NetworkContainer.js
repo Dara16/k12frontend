@@ -18,18 +18,8 @@ export default function NetworkContainer() {
         return networks.map(network => <Network network={network} key={network._id}/>)
     }
 
-    function createNetwork(network) {
-        fetch(BASE_URL + 'network',{
-            method: "POST",
-            body: JSON.stringify(network),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => setNetworks([...networks, json]))
-        
+    function updateNetworks(network) {
+        setNetworks([...networks, network])
     }
 
     function toggleDropdown() {
@@ -47,7 +37,7 @@ export default function NetworkContainer() {
             )}
             
             <div>           
-                <NetworkForm createNetwork={createNetwork}/>
+                <NetworkForm updateNetworks={updateNetworks}/>
             </div>
         </div>
     )

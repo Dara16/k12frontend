@@ -11,25 +11,14 @@ export default function PhoneContainer() {
         fetch(BASE_URL + 'phone')
             .then(resp => resp.json())
             .then(json => setPhones(json))
-
     }, [])
 
     function populatePhones() {
         return phones.map(phone => <Phone phone={phone} key={phone._id}/>)
     }
 
-    function createPhone(phone) {
-        fetch(BASE_URL + 'phone',{
-            method: "POST",
-            body: JSON.stringify(phone),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => setPhones([...phones, json]))
-        
+    function updatePhones(phone) {
+        setPhones([...phones, phone])
     }
 
     function toggleDropdown() {
@@ -47,7 +36,7 @@ export default function PhoneContainer() {
             )}
             
             <div>           
-                <PhoneForm createPhone={createPhone}/>
+                <PhoneForm updatePhones={updatePhones}/>
             </div>
         </div>
     )

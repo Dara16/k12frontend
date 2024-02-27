@@ -18,18 +18,8 @@ export default function IotContainer() {
         return iots.map(iot => <Iot iot={iot} key={iot._id}/>)
     }
 
-    function createIot(iot) {
-        fetch(BASE_URL + 'iot',{
-            method: "POST",
-            body: JSON.stringify(iot),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => setIots([...iots, json]))
-        
+    function updateIots(iot) {
+        setIots([...iots, iot])
     }
 
     function toggleDropdown() {
@@ -47,7 +37,7 @@ export default function IotContainer() {
             )}
             
             <div>           
-                <IotForm createIot={createIot}/>
+                <IotForm updateIots={updateIots}/>
             </div>
         </div>
     )

@@ -1,21 +1,35 @@
 import React, { useState } from 'react'
+import { BASE_URL } from '../constraints/index';
 
-export default function FirewallForm({createFirewall}) {
+export default function FirewallForm({ updateFirewalls }) {
     const [formData, setFormData] = useState({
         brand: "",
         firewallType: "",
         deviceName: "",
         deviceModel: ""
     })
-    const [success, setSuccess] = useState(false)
-
-    function toggleSuccess() {
-        setSuccess(!success)
-    }
+    const [success, setSuccess] = useState("")
 
     function handleChange(e) {
         formData[e.target.name] = e.target.value
         setFormData({...formData})
+    }
+
+    function createFirewall(firewall) {
+        fetch(BASE_URL + 'firewall',{
+            method: "POST",
+            body: JSON.stringify(firewall),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            const {device, message} = json
+            updateFirewalls(device)
+            setSuccess(message)
+        })    
     }
 
     function handleSubmit(e) {
@@ -28,8 +42,6 @@ export default function FirewallForm({createFirewall}) {
             deviceModel: "",
             storageSize: ""
         })
-
-        toggleSuccess()
     }
 
 
@@ -50,7 +62,7 @@ export default function FirewallForm({createFirewall}) {
             </form>
             <p>
                 {success && (
-                    <span>Success! We will respond to the email associated with your account within 3 business days</span>
+                    <span>{success}</span>
                 )}
             </p>
         </div>

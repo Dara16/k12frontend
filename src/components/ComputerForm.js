@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { BASE_URL } from '../constraints/index';
 
-export default function ComputerForm({createComputer}) {
+export default function ComputerForm({ updateComputers }) {
     const [formData, setFormData] = useState({
         brand: "",
         deviceName: "",
@@ -9,15 +10,28 @@ export default function ComputerForm({createComputer}) {
         ram: "",
         storageSize: ""
     })
-    const [success, setSuccess] = useState(false)
-
-    function toggleSuccess() {
-        setSuccess(!success)
-    }
+    const [success, setSuccess] = useState("")
 
     function handleChange(e) {
         formData[e.target.name] = e.target.value
         setFormData({...formData})
+    }
+
+    function createComputer(computer) {
+        fetch(BASE_URL + 'computer',{
+            method: "POST",
+            body: JSON.stringify(computer),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            const {device, message} = json
+            updateComputers(device)
+            setSuccess(message)
+        })
     }
 
     function handleSubmit(e) {
@@ -31,8 +45,6 @@ export default function ComputerForm({createComputer}) {
             ram: "",
             storageSize: ""
         })
-
-        toggleSuccess()
     }
 
 
@@ -57,7 +69,7 @@ export default function ComputerForm({createComputer}) {
             </form>
             <p>
                 {success && (
-                    <span>Success! We will respond to the email associated with your account within 3 business days</span>
+                    <span>{success}</span>
                 )}
             </p>
         </div>

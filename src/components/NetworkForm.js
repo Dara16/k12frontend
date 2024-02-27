@@ -1,22 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { BASE_URL } from '../constraints/index';
 
-export default function NetworkForm({createNetwork}) {
+export default function NetworkForm({ updateNetworks }) {
     const [formData, setFormData] = useState({
         brand: "",
         deviceName: "",
         deviceModel: "",
         deviceType: ""
     })
-    const [success, setSuccess] = useState(false)
-
-    function toggleSuccess() {
-        setSuccess(!success)
-    }
+    const [success, setSuccess] = useState("")
 
     function handleChange(e) {
         formData[e.target.name] = e.target.value
         setFormData({...formData})
     }
+
+    function createNetwork(network) {
+        fetch(BASE_URL + 'network',{
+            method: "POST",
+            body: JSON.stringify(network),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            const {device, message} = json
+            updateNetworks(device)
+            setSuccess(message)
+        })      
+    } 
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -27,8 +41,6 @@ export default function NetworkForm({createNetwork}) {
             deviceModel: "",
             deviceType: ""
         })
-
-        toggleSuccess()
     }
 
 
@@ -48,7 +60,7 @@ export default function NetworkForm({createNetwork}) {
             </form>
             <p>
                 {success && (
-                    <span>Success! We will respond to the email associated with your account within 3 business days</span>
+                    <span>{success}</span>
                 )}
             </p>
         </div>

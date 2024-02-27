@@ -1,21 +1,35 @@
 import React, { useState } from 'react'
+import { BASE_URL } from '../constraints/index';
 
-export default function IotForm({createIot}) {
+export default function IotForm({ updateIots }) {
     const [formData, setFormData] = useState({
         brand: "",
         deviceName: "",
         deviceModel: "",
         connectivity: ""
     })
-    const [success, setSuccess] = useState(false)
-
-    function toggleSuccess() {
-        setSuccess(!success)
-    }
+    const [success, setSuccess] = useState("")
 
     function handleChange(e) {
         formData[e.target.name] = e.target.value
         setFormData({...formData})
+    }
+
+    function createIot(iot) {
+        fetch(BASE_URL + 'iot',{
+            method: "POST",
+            body: JSON.stringify(iot),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            const {device, message} = json
+            updateIots(device)
+            setSuccess(message)
+        })     
     }
 
     function handleSubmit(e) {
@@ -27,8 +41,6 @@ export default function IotForm({createIot}) {
             deviceModel: "",
             connectivity: ""
         })
-
-        toggleSuccess()
     }
 
 
@@ -49,7 +61,7 @@ export default function IotForm({createIot}) {
             </form>
             <p>
                 {success && (
-                    <span>Success! We will respond to the email associated with your account within 3 business days</span>
+                    <span>{success}</span>
                 )}
             </p>
         </div>

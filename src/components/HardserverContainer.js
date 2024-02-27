@@ -18,18 +18,8 @@ export default function HardserverContainer() {
         return hardservers.map(hardserver => <Hardserver hardserver={hardserver} key={hardserver._id}/>)
     }
 
-    function createHardserver(hardserver) {
-        fetch(BASE_URL + 'hardserver',{
-            method: "POST",
-            body: JSON.stringify(hardserver),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => setHardservers([...hardservers, json]))
-        
+    function updateHardservers(hardserver) {
+        setHardservers([...hardservers, hardserver])
     }
 
     function toggleDropdown() {
@@ -47,7 +37,7 @@ export default function HardserverContainer() {
             )}
 
             <div>           
-                <HardserverForm createHardserver={createHardserver}/>
+                <HardserverForm updateHardservers={updateHardservers}/>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { BASE_URL } from '../constraints/index';
 
-export default function HardserverForm({createHardserver}) {
+export default function HardserverForm({ updateHardservers }) {
     const [formData, setFormData] = useState({
         brand: "",
         deviceName: "",
@@ -9,15 +10,29 @@ export default function HardserverForm({createHardserver}) {
         ram: "",
         storageSize: ""
     })
-    const [success, setSuccess] = useState(false)
-
-    function toggleSuccess() {
-        setSuccess(!success)
-    }
+    const [success, setSuccess] = useState("")
 
     function handleChange(e) {
         formData[e.target.name] = e.target.value
         setFormData({...formData})
+    }
+
+    function createHardserver(hardserver) {
+        fetch(BASE_URL + 'hardserver',{
+            method: "POST",
+            body: JSON.stringify(hardserver),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            const {device, message} = json
+            updateHardservers(device)
+            setSuccess(message)
+        })
+        
     }
 
     function handleSubmit(e) {
@@ -31,8 +46,6 @@ export default function HardserverForm({createHardserver}) {
             ram: "",
             storageSize: ""
         })
-
-        toggleSuccess()
     }
 
 
@@ -57,7 +70,7 @@ export default function HardserverForm({createHardserver}) {
             </form>
             <p>
                 {success && (
-                    <span>Device submitted successfully. We will respond to the email associated with your account within 3 business days</span>
+                    <span>{success}</span>
                 )}
             </p>
         </div>

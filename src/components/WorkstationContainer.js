@@ -18,18 +18,8 @@ export default function WorkstationsContainer() {
         return workstations.map(workstation => <Workstation workstation={workstation} key={workstation._id}/>)
     }
 
-    function createWorkstation(workstation) {
-        fetch(BASE_URL + 'workstation',{
-            method: "POST",
-            body: JSON.stringify(workstation),
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => setWorkstations([...workstations, json]))
-        
+    function updateWorkstations(workstation) {
+        setWorkstations([...workstations, workstation]) 
     }
 
     function toggleDropdown() {
@@ -47,7 +37,7 @@ export default function WorkstationsContainer() {
             )}
             
             <div>           
-                <WorkstationForm createWorkstation={createWorkstation}/>
+                <WorkstationForm updateWorkstations={updateWorkstations}/>
             </div>
         </div>
     )
